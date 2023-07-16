@@ -68,9 +68,9 @@ export const StyledButton = styled.button`
             }
         `}
 
-    // negative
+    // $negative
     ${(props) =>
-        props.negative === true &&
+        props.$negative === true &&
         css`
             background-color: transparent;
             border: 2px solid ${(props) => getBtnColor(props.color)};
