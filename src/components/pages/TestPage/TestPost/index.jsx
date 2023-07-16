@@ -1,23 +1,29 @@
 import React,{useState} from 'react'
-import Button from "../../shared/Button";
+import Button from "../../../shared/Button";
 import { useQueryClient, useMutation } from 'react-query';
 import { matchManito } from '../../../../api/manito';
 
 /** 마니또 매칭 요청 테스트 */
 function TestPost() {
     const queryClient = useQueryClient();    
-    const [manitoList, setManitoList] = useState('');
 
-    const mutation = useMutation(matchManito,{
+    const {mutate} = useMutation(matchManito,{
         onSuccess: () => {
+            console.log('Post Success');
             queryClient.invalidateQueries('manitoList');
-        
+        },
+        onError: () => {
+            console.log('Post Error');
         }
     });
 
+    const handleRequest = () => {
+        mutate();
+    }
+
   return (
-    <Button>POST TEST</Button>
+    <Button handleBtnClick={handleRequest}>POST TEST</Button>
   )
 }
 
-export default TestPost
+export default TestPost 
