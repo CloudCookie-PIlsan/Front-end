@@ -1,17 +1,19 @@
 import "./App.css";
-import Button from "./components/shared/Button";
-import IconButton from "./components/shared/IconButton";
 import GlobalStyle from "./styles/GlobalStyle";
+import Layout from './components/shared/Layout';
+import TestPage from "./components/pages/TestPage";
+import {QueryClient, QueryClientProvider} from'react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             <GlobalStyle />
-            <div>
-                <Button>버튼</Button>
-                <IconButton icon="notification" />
-            </div>
-        </>
+            <Layout>
+                <TestPage/>
+            </Layout>
+        </QueryClientProvider>
     );
 }
 
