@@ -14,9 +14,8 @@ function TestGet() {
     if (isError) {
         // setManitoData("에러 발생");
     }
-
-    console.log("data", data.data.manitoGiver);
-    return <div>당신의 마니또는 {data.data.manitoGiver}</div>;
+    const str = data === undefined ? "data is undefined" : data.data.manitoGiver;
+    return <div>당신의 마니또는 {str}</div>;
 }
 
 export default TestGet;
