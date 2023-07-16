@@ -4,7 +4,6 @@ import axios from "axios";
 /** axios instance */
 const client = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
-    withCredentials: false,
 });
 
 /** 마니또 정보 가져오기 */
