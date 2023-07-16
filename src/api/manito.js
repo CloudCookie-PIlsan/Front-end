@@ -9,7 +9,7 @@ const getManitoInfo = async () => {
 
 /** 마니또 매칭 요청 (TEST) */
 const matchManito = async (newMatch) => {
-    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/test`, newMatch);
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/manitoes/test`, newMatch);
     return response;
 };
 
