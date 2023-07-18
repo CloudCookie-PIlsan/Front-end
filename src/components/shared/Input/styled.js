@@ -11,7 +11,7 @@ export const StInput = styled.input`
     transition: 0.3s;
 
     &:focus {
-        border-color: dodgerBlue;
-        box-shadow: 0 0 8px 0 dodgerBlue;
+        border-color: #ff6b6b;
+        box-shadow: 0 0 8px 0 #ff6b6b;
     }
 `;
