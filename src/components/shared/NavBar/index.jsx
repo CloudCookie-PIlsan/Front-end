@@ -33,7 +33,7 @@ const NavBar = () => {
       <div>
         <Title>항해마니또💘</Title>
       </div>
-      {getCookie("Authorization") !== undefined ? <div>
+      {getCookie("Authorization") === undefined ? <div>
         <Button color="danger" $negative={true} handleBtnClick={()=> {
           handleRegisterModal(true)
         }}>Sign Up</Button>
