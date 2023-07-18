@@ -3,12 +3,14 @@ import ModalContainer from "..";
 import Title from "../../Title";
 import Input from "../../Input";
 import Button from "../../Button";
+import Message from "../../Message";
 import {StButtonContainer} from "../styled";
 import { useQueryClient, useMutation } from "react-query";
 import { register } from "../../../../api/API";
 
 const ModalRegister = (props) => {
     const {onClose} = props;
+    const [errMsg, SetErrMsg] = useState("");
     const [input, SetInput] = useState({
         userName: "",
         id: "",
@@ -21,10 +23,12 @@ const ModalRegister = (props) => {
         onSuccess: (data) => {
             console.log(data);
             queryClient.setQueryData("user", data);
+            window.alert("회원가입이 완료되었습니다!");
             onClose();
         },
         onError: (error) => {
             console.log(error);
+            SetErrMsg(error.message);
         },
     });
 
@@ -75,6 +79,7 @@ const ModalRegister = (props) => {
                 placeholder="pw 입력해주세요!"
             />
             </div>
+            <Message>{errMsg}</Message>
             <StButtonContainer>
                 <Button handleBtnClick={handleSubmit}>회원 가입</Button>
             </StButtonContainer>
