@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StInput = styled.input`
+    font-family: 'Pretendard' !important;
     width: 100%;
     border: 2px solid #aaa;
     border-radius: 4px;
