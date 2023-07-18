@@ -40,7 +40,7 @@ const ModalLogin = (props) => {
             return;
         } else {
             console.log("로그인!");
-            mutate();
+            mutate(input);
         }
     };
 

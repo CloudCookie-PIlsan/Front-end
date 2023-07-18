@@ -42,7 +42,7 @@ const ModalRegister = (props) => {
             return;
         } else {
             console.log("회원가입!");
-            mutate();
+            mutate(input);
         }
     }
 
