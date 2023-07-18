@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StWrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: #fab1a0;
+    background-color: var(--color-main);
     background-image: url('../assets/images/img-heart.svg');
     background-size: 67px 85px;
     background-repeat: repeat;
