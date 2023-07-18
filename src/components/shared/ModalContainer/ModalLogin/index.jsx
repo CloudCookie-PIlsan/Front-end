@@ -35,8 +35,13 @@ const ModalLogin = (props) => {
     };
 
     const handleSubmit = () => {
-        console.log("로그인!");
-        mutate();
+        if(input.id === "" || input.pw === ""){
+            alert("아이디와 비밀번호를 입력해주세요.");
+            return;
+        } else {
+            console.log("로그인!");
+            mutate();
+        }
     };
 
     return (
