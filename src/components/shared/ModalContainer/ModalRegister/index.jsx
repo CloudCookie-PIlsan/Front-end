@@ -4,6 +4,8 @@ import Title from "../../Title";
 import Input from "../../Input";
 import Button from "../../Button";
 import {StButtonContainer} from "../styled";
+import { useQueryClient, useMutation } from "react-query";
+import { register } from "../../../../api/API";
 
 const ModalRegister = (props) => {
     const {onClose} = props;
@@ -13,7 +15,20 @@ const ModalRegister = (props) => {
         pw: "",
     });
 
-    /** 로그인 input state 처리 함수 */
+    // API 통신
+    const queryClient = useQueryClient();
+    const { mutate } = useMutation(register, {
+        onSuccess: (data) => {
+            console.log(data);
+            queryClient.setQueryData("user", data);
+            onClose();
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+
+    /** 회원 가입 input state 처리 함수 */
     const handleInput = (e) => {
         SetInput({
             ...input,
@@ -22,15 +37,13 @@ const ModalRegister = (props) => {
     };
 
     const handleSubmit = () => {
-        console.log("회원가입!");
-        //! API 통신 붙이기
-        /**
-         * {
-            userName:
-            userId:
-            password:
-            }
-         */
+        if(input.userName === "" || input.id === "" || input.pw === "") {
+            alert("이름, 아이디와 비밀번호를 입력해주세요.");
+            return;
+        } else {
+            console.log("회원가입!");
+            mutate();
+        }
     }
 
     return (
