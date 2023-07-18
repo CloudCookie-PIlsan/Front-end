@@ -38,7 +38,7 @@ const ModalRegister = (props) => {
             ...input,
             [e.target.name]: e.target.value,
         });
-        console.log(input);
+        console.log("useName: " + input.userName, "userId: " + input.userId, "password: " + input.password);
     };
 
     const handleSubmit = () => {

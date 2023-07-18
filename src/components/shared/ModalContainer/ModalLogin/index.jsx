@@ -14,8 +14,8 @@ const ModalLogin = (props) => {
     const { onClose } = props;
     const [errMsg, SetErrMsg] = useState("");
     const [input, SetInput] = useState({
-        id: "",
-        pw: "",
+        userId: "",
+        password: "",
     });
     // API 통신
     const queryClient = useQueryClient();
@@ -39,10 +39,11 @@ const ModalLogin = (props) => {
             ...input,
             [e.target.name]: e.target.value,
         }); 
+        console.log("id: ", input.userId, "password: ", input.password);
     };
 
     const handleSubmit = () => {
-        if(input.id === "" || input.pw === ""){
+        if(input.userId === "" || input.password === ""){
             alert("아이디와 비밀번호를 입력해주세요.");
             return;
         } else {
@@ -56,14 +57,14 @@ const ModalLogin = (props) => {
             <Title>Login</Title>
             <div>
                 <p>ID</p>
-                <Input value={input.id} name="id" onChange={handleInput} type="text" placeholder="ID 입력해주세요!" />
+                <Input value={input.userId} name="userId" onChange={handleInput} type="text" placeholder="ID 입력해주세요!" />
                 <p>비밀번호</p>
                 <Input
-                    value={input.pw}
-                    name="pw"
+                    value={input.password}
+                    name="password"
                     onChange={handleInput}
                     type="password"
-                    placeholder="pw 입력해주세요!"
+                    placeholder="password 입력해주세요!"
                 />
             </div>
             <Message>{errMsg}</Message>
