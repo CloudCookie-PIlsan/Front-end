@@ -11,10 +11,6 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <GlobalStyle />
-            <Layout>
-                <TestPage />
-            </Layout>
-
             <BrowserRouter>
                 <Router />
             </BrowserRouter>
