@@ -8,9 +8,9 @@ const ModalContainer = (props) => {
     const onToggleModal = () => {
         onClose();
     };
-    return <StOverlay onClick={onToggleModal}> 
+    return <StOverlay> 
         <StModalContainer>
-            <IconButton icon="notification" onClick={onToggleModal}/>
+            <IconButton icon="x" handleClick={onToggleModal}/>
         {children}
         </StModalContainer>
      </StOverlay>;
