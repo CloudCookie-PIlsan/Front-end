@@ -23,14 +23,20 @@ const NavBar = () => {
       <div>
         <Title>항해마니또💘</Title>
       </div>
-      <div>
+      {false && <div>
         <Button color="danger" $negative={true} handleBtnClick={()=> {
           handleRegisterModal(true)
         }}>Sign Up</Button>
         <Button color="danger" handleBtnClick={()=>{
           handleLoginModal(true);
         }}>Log in</Button>
-      </div>
+      </div>}
+      {true && <div>
+        <Button $negative={true} handleBtnClick={()=> {}}>마니또에게 쪽지 보내기</Button>
+        <Button $negative={true} handleBtnClick={()=> {}}>로그아웃</Button>
+        
+      </div>}
+      
     </StNavContainer>
         {onLogin && <ModalLogin onClose={()=>{
           handleLoginModal(false)
