@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     :root{
         --border: 2px solid rgba(255, 255, 255, 0.5);
         --background: rgba(250, 177, 160, 0.7);
+        --color-main: #fab1a0;
     }
     @font-face {
     font-family: 'Ramche';
