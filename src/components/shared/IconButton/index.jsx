@@ -1,12 +1,11 @@
 import React from "react";
 import Icon from "../Icon";
 import { StIconButton } from "./styled";
-import { iconList } from "../../Datas/iconData";
 
 const IconButton = (props) => {
-    const { onClick, icon } = props;
+    const { handleClick, icon } = props;
     const clickButton = () => {
-        console.log("btn clicked!"); // * 필요한 함수 넣기
+        handleClick();
     };
     return (
         <StIconButton onClick={clickButton}>

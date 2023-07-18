@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {StIconButton} from "../IconButton/styled"
 
 export const StOverlay = styled.div`
     width: 100%;
@@ -14,7 +15,7 @@ export const StOverlay = styled.div`
 
 export const StModalContainer = styled.div`
     width: 600px;
-    height: 400px;
+    min-height: 400px;
     padding: 4rem;
     box-sizing: border-box;
     border-radius: 10px;
@@ -23,6 +24,7 @@ export const StModalContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     position: relative;
     & > div {
         width: 100%;

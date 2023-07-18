@@ -3,12 +3,19 @@ import reset from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
-    :root {
+    :root{
         --border: 2px solid rgba(255, 255, 255, 0.5);
         --background: rgba(250, 177, 160, 0.7);
+        --color-main: #fab1a0;
+    }
+    @font-face {
+    font-family: 'Ramche';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Ramche.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
     }
     * {
-        font-family: 'Pretendard', 'Courier New', Courier, monospace, sans-serif !important;
+        font-family: 'Ramche', 'Courier New', Courier, monospace, sans-serif !important;
         font-size: 16px;
         button { border: 0; }
         select {
@@ -16,6 +23,10 @@ const GlobalStyle = createGlobalStyle`
             -webkit-appearance: none;
             appearance: none;
             }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
     }
 `;
 

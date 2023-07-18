@@ -1,17 +1,17 @@
-import React from 'react'
-import NavBar from '../NavBar'
-import {StWrapper, StContainer} from './styled'
+import React from "react";
+import NavBar from "../NavBar";
+import { StWrapper, StContainer } from "./styled";
+import { Outlet } from "react-router-dom";
 
-function Layout(props) {
-    const {children} = props;
-  return (
-    <StWrapper>
-        <NavBar/>
-        <StContainer>
-            {children}
-        </StContainer>
-    </StWrapper>
-  )
+function Layout() {
+    return (
+        <StWrapper>
+            <NavBar />
+            <StContainer>
+                <Outlet />
+            </StContainer>
+        </StWrapper>
+    );
 }
 
-export default Layout
+export default Layout;
