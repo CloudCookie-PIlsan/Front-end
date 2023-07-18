@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import Button from "../../../shared/Button";
 import { useQueryClient, useMutation } from 'react-query';
-import { matchManito } from '../../../../api/manito';
+import { matchManito } from '../../../../api/API';
 
 /** 마니또 매칭 요청 테스트 */
 function TestPost() {

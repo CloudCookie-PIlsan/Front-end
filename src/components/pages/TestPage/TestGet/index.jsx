@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { getManitoInfo } from "../../../../api/manito";
+import { getManitoInfo } from "../../../../api/API";
 import { useQuery } from "react-query";
 
 /** 마니또 정보 가져오기 테스트 */
