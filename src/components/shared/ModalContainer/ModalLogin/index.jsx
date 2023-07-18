@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 const ModalLogin = (props) => {
     const navigate = useNavigate();
     const { onClose } = props;
-    const [errMsg, SetErrMsg] = useState("");
-    const [input, SetInput] = useState({
+    const [errMsg, setErrMsg] = useState("");
+    const [input, setInput] = useState({
         userId: "",
         password: "",
     });
@@ -29,18 +29,18 @@ const ModalLogin = (props) => {
         },
         onError: (error) => {
             console.log(error);
-            SetErrMsg(error.message);
+            setErrMsg(error.message);
         },
     });
 
     /** 로그인 input state 처리 함수 */
     const handleInput = (e) => {
-        SetInput({
+        setInput({
             ...input,
             [e.target.name]: e.target.value,
         }); 
-        console.log("id: ", input.userId, "password: ", input.password);
     };
+    console.log("id: ", input.userId, "password: ", input.password);
 
     const handleSubmit = () => {
         if(input.userId === "" || input.password === ""){
@@ -57,12 +57,12 @@ const ModalLogin = (props) => {
             <Title>Login</Title>
             <div>
                 <p>ID</p>
-                <Input value={input.userId} name="userId" onChange={handleInput} type="text" placeholder="ID 입력해주세요!" />
+                <Input value={input.userId} name="userId" handleChange={handleInput} type="text" placeholder="ID 입력해주세요!" />
                 <p>비밀번호</p>
                 <Input
                     value={input.password}
                     name="password"
-                    onChange={handleInput}
+                    handleChange={handleInput}
                     type="password"
                     placeholder="password 입력해주세요!"
                 />

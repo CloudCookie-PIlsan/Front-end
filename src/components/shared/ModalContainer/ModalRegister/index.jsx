@@ -10,8 +10,8 @@ import { register } from "../../../../api/API";
 
 const ModalRegister = (props) => {
     const {onClose} = props;
-    const [errMsg, SetErrMsg] = useState("");
-    const [input, SetInput] = useState({
+    const [errMsg, setErrMsg] = useState("");
+    const [input, setInput] = useState({
         userName: "",
         userId: "",
         password: "",
@@ -28,19 +28,20 @@ const ModalRegister = (props) => {
         },
         onError: (error) => {
             console.log(error);
-            SetErrMsg(error.message);
+            setErrMsg(error.message);
         },
     });
 
     /** 회원 가입 input state 처리 함수 */
     const handleInput = (e) => {
-        SetInput({
+        console.log("fire!");
+        setInput({
             ...input,
             [e.target.name]: e.target.value,
         });
-        console.log("useName: " + input.userName, "userId: " + input.userId, "password: " + input.password);
     };
-
+    
+    console.log("useName: " + input.userName, "userId: " + input.userId, "password: " + input.password);
     const handleSubmit = () => {
         if(input.userName === "" || input.userId === "" || input.password === "") {
             alert("이름, 아이디와 비밀번호를 입력해주세요.");
@@ -59,7 +60,7 @@ const ModalRegister = (props) => {
             <Input 
                 value={input.userName} 
                 name="userName"
-                onChange={handleInput}
+                handleChange={handleInput}
                 type="text"
                 placeholder="이름을 입력해주세요"
                 />
@@ -67,17 +68,17 @@ const ModalRegister = (props) => {
             <Input 
                 value={input.userId} 
                 name="userId"
-                onChange={handleInput}
+                handleChange={handleInput}
                 type="text"
-                placeholder="ID 입력해주세요!"
+                placeholder="영어 소문자와 숫자 반드시 포함한 4~10자"
                 />
             <p>비밀번호</p>
             <Input 
                 value={input.password} 
                 name="password"
-                onChange={handleInput}
+                handleChange={handleInput}
                 type="password"
-                placeholder="pw 입력해주세요!"
+                placeholder="영어 소문자, 숫자와 특수문자 반드시 포함한 8~15자"
             />
             </div>
             <Message>{errMsg}</Message>
