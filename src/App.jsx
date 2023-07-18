@@ -1,16 +1,17 @@
 import "./App.css";
-import Button from "./components/shared/Button";
-import IconButton from "./components/shared/IconButton";
 import GlobalStyle from "./styles/GlobalStyle";
+import NavBar from "./components/shared/NavBar";
+import Layout from "./components/shared/Layout";
+import Router from "./Router"
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
     return (
         <>
             <GlobalStyle />
-            <div>
-                <Button>버튼</Button>
-                <IconButton icon="notification" />
-            </div>
+            <BrowserRouter>
+                <Router />
+            </BrowserRouter>
         </>
     );
 }
