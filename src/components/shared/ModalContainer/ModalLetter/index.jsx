@@ -29,7 +29,7 @@ const ModalRegister = (props) => {
     };
 
     const handleSubmit = () => {
-        if(value === ""){
+        if(text === ""){
             alert("쪽지 내용을 입력해주세요.");
             return;
         } else {
