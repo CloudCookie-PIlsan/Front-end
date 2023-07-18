@@ -15,8 +15,8 @@ export const StWrapper = styled.div`
 export const StContainer = styled.div`
     width: 90%;
     height: 80vh;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    background-color: rgba(250, 177, 160, 0.7);
+    border: var(--border);
+    background-color: var(--background);
     border-radius: 10px;
     //padding: 5rem;
     box-sizing: border-box;
