@@ -71,6 +71,7 @@ const fetchReceivedList = async () => {
 export {
     getManitoInfo,
     login,
+    register,
     fetchManitoInfo,
     fetchPreviousManitoInfo,
     guessManito,
