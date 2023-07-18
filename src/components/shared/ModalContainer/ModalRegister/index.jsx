@@ -12,7 +12,7 @@ const ModalRegister = (props) => {
     const {onClose} = props;
     const [errMsg, setErrMsg] = useState("");
     const [input, setInput] = useState({
-        userName: "",
+        username: "",
         userId: "",
         password: "",
     });
@@ -25,6 +25,7 @@ const ModalRegister = (props) => {
             queryClient.setQueryData("user", data);
             window.alert("회원가입이 완료되었습니다!");
             onClose();
+
         },
         onError: (error) => {
             console.log(error);
@@ -34,16 +35,14 @@ const ModalRegister = (props) => {
 
     /** 회원 가입 input state 처리 함수 */
     const handleInput = (e) => {
-        console.log("fire!");
         setInput({
             ...input,
             [e.target.name]: e.target.value,
         });
     };
     
-    console.log("useName: " + input.userName, "userId: " + input.userId, "password: " + input.password);
     const handleSubmit = () => {
-        if(input.userName === "" || input.userId === "" || input.password === "") {
+        if(input.username === "" || input.userId === "" || input.password === "") {
             alert("이름, 아이디와 비밀번호를 입력해주세요.");
             return;
         } else {
@@ -58,8 +57,8 @@ const ModalRegister = (props) => {
             <div>
             <p>이름</p>
             <Input 
-                value={input.userName} 
-                name="userName"
+                value={input.username} 
+                name="username"
                 handleChange={handleInput}
                 type="text"
                 placeholder="이름을 입력해주세요"

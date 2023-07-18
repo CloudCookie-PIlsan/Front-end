@@ -40,7 +40,6 @@ const ModalLogin = (props) => {
             [e.target.name]: e.target.value,
         }); 
     };
-    console.log("id: ", input.userId, "password: ", input.password);
 
     const handleSubmit = () => {
         if(input.userId === "" || input.password === ""){
