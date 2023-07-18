@@ -3,12 +3,16 @@ import ModalContainer from "../../ModalContainer";
 import Title from "../../Title";
 import Input from "../../Input";
 import Button from "../../Button";
+import Message from "../../Message";
 import { useQueryClient, useMutation } from "react-query";
 import { StButtonContainer } from "../styled";
 import { login } from "../../../../api/API";
+import { useNavigate } from "react-router-dom";
 
 const ModalLogin = (props) => {
+    const navigate = useNavigate();
     const { onClose } = props;
+    const [errMsg, SetErrMsg] = useState("");
     const [input, SetInput] = useState({
         id: "",
         pw: "",
@@ -19,10 +23,13 @@ const ModalLogin = (props) => {
         onSuccess: (data) => {
             console.log(data);
             queryClient.setQueryData("user", data);
+            window.alert(`환영합니다!`)
             onClose();
+            navigate("/dashboard/manito");
         },
         onError: (error) => {
             console.log(error);
+            SetErrMsg(error.message);
         },
     });
 
@@ -59,6 +66,7 @@ const ModalLogin = (props) => {
                     placeholder="pw 입력해주세요!"
                 />
             </div>
+            <Message>{errMsg}</Message>
             <StButtonContainer>
                 <Button handleBtnClick={handleSubmit}>로그인하기</Button>
             </StButtonContainer>
