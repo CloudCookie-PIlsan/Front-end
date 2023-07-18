@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
             -webkit-appearance: none;
             appearance: none;
             }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
     }
 `;
 
