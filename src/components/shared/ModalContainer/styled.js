@@ -29,6 +29,9 @@ export const StModalContainer = styled.div`
     & > div {
         width: 100%;
     }
+    & > p {
+        margin-right: auto;
+    }
 `;
 
 export const StButtonContainer = styled.div`
