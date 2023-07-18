@@ -1,8 +1,10 @@
 import styled, { css } from "styled-components";
 
 // 컬러셋
-const $primary = "#1abc9c";
-const $primaryHover = "#16a085";
+const $primary = "#636e72";
+const $primaryHover = "#2d3436";
+const $success = "#1abc9c";
+const $successHover = "#16a085";
 const $danger = "#e74c3c";
 const $dangerHover = "#c0392b";
 
@@ -11,7 +13,8 @@ const getBtnColor = (colorType, isHover = false) => {
     switch (colorType) {
         case "danger":
             return isHover ? $dangerHover : $danger;
-        case "primary":
+            case "primary":
+            return isHover ? $successHover : $success;
         default:
             return isHover ? $primaryHover : $primary;
     }
