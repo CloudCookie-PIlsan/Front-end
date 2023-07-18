@@ -13,8 +13,8 @@ const ModalRegister = (props) => {
     const [errMsg, SetErrMsg] = useState("");
     const [input, SetInput] = useState({
         userName: "",
-        id: "",
-        pw: "",
+        userId: "",
+        password: "",
     });
 
     // API 통신
@@ -42,7 +42,7 @@ const ModalRegister = (props) => {
     };
 
     const handleSubmit = () => {
-        if(input.userName === "" || input.id === "" || input.pw === "") {
+        if(input.userName === "" || input.userId === "" || input.password === "") {
             alert("이름, 아이디와 비밀번호를 입력해주세요.");
             return;
         } else {
@@ -65,16 +65,16 @@ const ModalRegister = (props) => {
                 />
             <p>ID</p>
             <Input 
-                value={input.id} 
-                name="id"
+                value={input.userId} 
+                name="userId"
                 onChange={handleInput}
                 type="text"
                 placeholder="ID 입력해주세요!"
                 />
             <p>비밀번호</p>
             <Input 
-                value={input.pw} 
-                name="pw"
+                value={input.password} 
+                name="password"
                 onChange={handleInput}
                 type="password"
                 placeholder="pw 입력해주세요!"
