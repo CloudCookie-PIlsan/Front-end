@@ -17,5 +17,5 @@ const getMsgColor = (colorType = "error") => {
 
 export const StMsg = styled.span`
     font-size: 0.8rem;
-    color: ${props => getMsgColor(props.msgType)};
+    color: ${props => getMsgColor(props.$msgType)};
 `;
