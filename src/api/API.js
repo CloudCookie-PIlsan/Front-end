@@ -15,14 +15,15 @@ const matchManito = async (newMatch) => {
 };
 
 /** 로그인 */
-const login = async (userId, password) => {
-    const response = await client.post(`/api/login`, { userId, password });
+const login = async (newData) => {
+    const response = await client.post(`/api/login`, newData);
     return response;
 };
 
 /** 회원 가입 */
-const register = async (userName, userId, password) => {
-    const response = await client.post(`/api/signup`, { userName, userId, password });
+const register = async (newData) => {
+    console.log("newData", newData);
+    const response = await client.post(`/api/signup`, newData);
     return response;
 };
 
