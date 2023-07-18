@@ -1,110 +1,27 @@
 import React from "react";
 import Title from "../../../shared/Title";
 import SubTitle from "../../../shared/SubTitle";
-import Button from "../../../shared/Button";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
+import { fetchReceivedList } from "../../../../api/API";
+import { useQuery } from "react-query";
 
-const SectionInbox = (props) => {
+const SectionInbox = () => {
+    const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList);
+
     return (
         <ContentContainer>
             <Title>받은 쪽지함</Title>
             <LetterContainer>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
-                <LetterBox>
-                    <h5>From. 박구름</h5>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, maxime laboriosam. Saepe
-                        doloribus beatae cum. Sed omnis quasi quam totam nemo id porro perspiciatis esse, mollitia
-                        molestias praesentium eaque saepe!
-                    </p>
-                </LetterBox>
+                {!isLoading &&
+                    !isError &&
+                    data.map((item, index) => {
+                        return (
+                            <LetterBox key={index}>
+                                <SubTitle>From. {item.sendPersonUsername}</SubTitle>
+                                <p>{item.contents}</p>
+                            </LetterBox>
+                        );
+                    })}
             </LetterContainer>
         </ContentContainer>
     );
