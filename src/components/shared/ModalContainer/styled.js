@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {StIconButton} from "../IconButton/styled"
 
 export const StOverlay = styled.div`
     width: 100%;
