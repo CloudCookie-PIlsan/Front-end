@@ -20,12 +20,6 @@ const config = {
     },
 }
 
-/** 마니또 매칭 요청 (TEST) */
-const matchManito = async (newMatch) => {
-    const response = await client.post(`/api/manitoes/test`, newMatch);
-    return response;
-};
-
 /** 로그인 */
 const login = async (newData) => {
     const response = await client.post(`/api/login`, newData);
@@ -41,13 +35,13 @@ const register = async (newData) => {
 
 /** 마니또 정보 가져오기 */
 const fetchManitoInfo = async () => {
-    const response = await client.get(`/api/manitoes/giver`);
+    const response = await client.get(`/api/manitoes/giver`, config);
     return response;
 };
 
 /** 나의 전 마니또 정보 가져오기 (전날 나를 마니또 한 사람) */
 const fetchPreviousManitoInfo = async () => {
-    const response = await client.get(`/api/manitoes/receiver`);
+    const response = await client.get(`/api/manitoes/receiver`, config);
     return response;
 };
 
@@ -65,13 +59,13 @@ const sendLetter = async (contents) => {
 
 /** 보낸 쪽지 리스트 확인 */
 const fetchSentList = async () => {
-    const response = await client.get(`/api/messages/send`);
+    const response = await client.get(`/api/messages/send`, config);
     return response;
 };
 
 /** 받은 쪽지 리스트 확인 */
 const fetchReceivedList = async () => {
-    const response = await client.get(`/api/messages/get`);
+    const response = await client.get(`/api/messages/get`, config);
     return response;
 };
 
@@ -85,5 +79,4 @@ export {
     sendLetter,
     fetchSentList,
     fetchReceivedList,
-    matchManito,
 };
