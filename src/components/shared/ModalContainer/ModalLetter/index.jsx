@@ -48,7 +48,7 @@ const ModalRegister = (props) => {
         <ModalContainer onClose={onClose}>
             <Title>마니또에게 쪽지 보내기</Title>
             <p>이름: {data !== undefined && data.manitoGiver}</p>
-            <TextArea value={text} onChange={handleInput}/>
+            <TextArea value={text} handleChange={handleInput}/>
             <StButtonContainer>
                 <Button handleBtnClick={handleSubmit}>보내기</Button>
             </StButtonContainer>
