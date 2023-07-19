@@ -74,6 +74,7 @@ const SectionManito = () => {
                     <ManitoGetter 
                         queryKey="curGiver"
                         queryFn={fetchManitoInfo}
+                        responseKey="manitoGiver"
                     />
                 </div>
                 <div>
@@ -81,6 +82,7 @@ const SectionManito = () => {
                     <ManitoGetter 
                         queryKey="prevReceiver"
                         queryFn={fetchPreviousManitoInfo}
+                        responseKey="manitoReceiver"
                     />
                 </div>
             </StManitoWrap>

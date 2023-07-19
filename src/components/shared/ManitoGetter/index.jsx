@@ -3,7 +3,7 @@ import { StManitoBox } from "../../pages/DashBoard/SectionManito/styled";
 import { useQuery } from "react-query";
 
 const ManitoGetter = (props) => {
-    const { queryKey, queryFn } = props;
+    const { queryKey, queryFn, responseKey } = props;
 
     const { isLoading, isError, data, error } = useQuery(queryKey, queryFn, {
         onSuccess: (data) => {
@@ -20,7 +20,7 @@ const ManitoGetter = (props) => {
     if (isError) {
         return <StManitoBox>Error: {error.message} </StManitoBox>;
     }
-    return <StManitoBox>{data}</StManitoBox>;
+    return <StManitoBox>{data.data[responseKey]}</StManitoBox>;
 };
 
 export default ManitoGetter;
