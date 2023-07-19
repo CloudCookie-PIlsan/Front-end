@@ -10,18 +10,18 @@ import { Navigate } from "react-router-dom";
 const SectionInbox = () => {
     const user = getCookie("Authorization");
     const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList, {
-        onSuccess: data => {
+        onSuccess: (data) => {
             console.log("SectionInbox success ", data);
         },
-        onError: error => {
+        onError: (error) => {
             console.log("SectionInbox error ", error.message);
-        }
+        },
     });
 
-    if(isLoading) {
+    if (isLoading) {
         return;
     }
-    if(isError) {
+    if (isError) {
         return;
     }
     return (
@@ -31,7 +31,8 @@ const SectionInbox = () => {
             <LetterContainer>
                 {!isLoading &&
                     !isError &&
-                    data?.map((item, index) => {
+                    data.data.length !== 0 &&
+                    data.data.map((item, index) => {
                         return (
                             <LetterBox key={index}>
                                 <SubTitle>From. {item.sendPersonUsername}</SubTitle>
