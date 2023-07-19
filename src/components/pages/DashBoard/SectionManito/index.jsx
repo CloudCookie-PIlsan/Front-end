@@ -21,22 +21,33 @@ const SectionManito = () => {
     });
     const [value, setValue] = useState(""); // 맞추기 인풋
     const [manitoInfo, setManitoInfo] = useState(["", ""]); // 현 마니또, 전 마니또 결과
-    const results = useQueries([
-        {
-            queryKey: "curGiver",
-            queryFn: fetchManitoInfo,
-        },
-        {
-            queryKey: "prevReceiver",
-            queryFn: fetchPreviousManitoInfo,
-        },
-    ]);
+    const { isCurLoading, curError, curGiverData } = useQuery("curGiver", fetchManitoInfo, {
+        onSuccess : () => {
+            setManitoInfo([curGiverData.data.manitoGiver, manitoInfo[1]]);
+        }
+    });
+    const { isPrevLoading, prevError, prevReceiverData } = useQuery("prevReceiver", fetchPreviousManitoInfo, {
+        onSuccess : () => {
+            setManitoInfo([manitoInfo[0], prevReceiverData.data.manitoReceiver]);
+        }
+    });
 
-    const isSuccess = results.every((query) => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
+    // const results = useQueries([
+    //     {
+    //         queryKey: "curGiver",
+    //         queryFn: fetchManitoInfo,
+    //     },
+    //     {
+    //         queryKey: "prevReceiver",
+    //         queryFn: fetchPreviousManitoInfo,
+    //     },
+    // ]);
 
-    if (isSuccess && results[0]?.data?.data?.manitoGiver && results[1]?.data?.data?.manitoReceiver) {
-        setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
-    }
+    // const isSuccess = results.every((query) => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
+
+    // if (isSuccess && results[0]?.data?.data?.manitoGiver && results[1]?.data?.data?.manitoReceiver) {
+    //     setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
+    // }
 
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
