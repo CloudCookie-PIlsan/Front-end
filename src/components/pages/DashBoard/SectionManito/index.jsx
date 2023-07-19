@@ -3,13 +3,13 @@ import Title from "../../../shared/Title";
 import SubTitle from "../../../shared/SubTitle";
 import Input from "../../../shared/Input";
 import Button from "../../../shared/Button";
-import { StManitoWrap, StGuessWrap, StManitoBox, AnswerBox } from "./styled";
+import { StManitoWrap, StGuessWrap, AnswerBox } from "./styled";
 import { ContentContainer } from "../styled";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../../api/API";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
-import UseHandleExpiredToken from "../../../../hooks/UseHandleExpiredToken";
+import ManitoGetter from "../../../shared/ManitoGetter";
 
 const SectionManito = () => {
     const user = getCookie("Authorization");
@@ -20,36 +20,6 @@ const SectionManito = () => {
         success: false,
     });
     const [value, setValue] = useState(""); // 맞추기 인풋
-    const [manitoInfo, setManitoInfo] = useState(["", ""]); // 현 마니또, 전 마니또 결과
-    const { isCurLoading, curError, curGiverData } = useQuery("curGiver", fetchManitoInfo, {
-        onSuccess : () => {
-            console.log(curGiverData);
-            setManitoInfo([curGiverData.data.manitoGiver, manitoInfo[1]]);
-        }
-    });
-    const { isPrevLoading, prevError, prevReceiverData } = useQuery("prevReceiver", fetchPreviousManitoInfo, {
-        onSuccess : () => {
-            console.log(prevReceiverData);
-            setManitoInfo([manitoInfo[0], prevReceiverData.data.manitoReceiver]);
-        }
-    });
-
-    // const results = useQueries([
-    //     {
-    //         queryKey: "curGiver",
-    //         queryFn: fetchManitoInfo,
-    //     },
-    //     {
-    //         queryKey: "prevReceiver",
-    //         queryFn: fetchPreviousManitoInfo,
-    //     },
-    // ]);
-
-    // const isSuccess = results.every((query) => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
-
-    // if (isSuccess && results[0]?.data?.data?.manitoGiver && results[1]?.data?.data?.manitoReceiver) {
-    //     setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
-    // }
 
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
@@ -101,11 +71,17 @@ const SectionManito = () => {
             <StManitoWrap>
                 <div>
                     <SubTitle>오늘 당신의 비밀 친구는? 🤔</SubTitle>
-                    <StManitoBox type="giver">{manitoInfo[0]}</StManitoBox>
+                    <ManitoGetter 
+                        queryKey="curGiver"
+                        queryFn={fetchManitoInfo}
+                    />
                 </div>
                 <div>
                     <SubTitle>어제 당신의 마니또는? 💘</SubTitle>
-                    <StManitoBox type="receiver">{manitoInfo[1]}</StManitoBox>
+                    <ManitoGetter 
+                        queryKey="prevReceiver"
+                        queryFn={fetchPreviousManitoInfo}
+                    />
                 </div>
             </StManitoWrap>
         </ContentContainer>
