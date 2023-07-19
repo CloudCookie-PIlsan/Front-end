@@ -9,8 +9,21 @@ import { Navigate } from "react-router-dom";
 
 const SectionInbox = () => {
     const user = getCookie("Authorization");
-    const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList);
+    const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList, {
+        onSuccess: data => {
+            console.log("SectionInbox success ", data);
+        },
+        onError: error => {
+            console.log("SectionInbox error ", error.message);
+        }
+    });
 
+    if(isLoading) {
+        return;
+    }
+    if(isError) {
+        return;
+    }
     return (
         <ContentContainer>
             {!user && <Navigate to="/" />}
@@ -18,7 +31,7 @@ const SectionInbox = () => {
             <LetterContainer>
                 {!isLoading &&
                     !isError &&
-                    data.map((item, index) => {
+                    data?.map((item, index) => {
                         return (
                             <LetterBox key={index}>
                                 <SubTitle>From. {item.sendPersonUsername}</SubTitle>
