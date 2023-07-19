@@ -14,29 +14,29 @@ import UseHandleExpiredToken from "../../../../hooks/UseHandleExpiredToken";
 const SectionManito = () => {
     const user = getCookie("Authorization");
     const [isGuessed, setIsGuessed] = useState(false); // 맞추기를 한 번이라도 했는지
-    const [guess, setGuess] = useState({ // 맞추기 결과값
+    const [guess, setGuess] = useState({
+        // 맞추기 결과값
         username: "",
         success: false,
     });
     const [value, setValue] = useState(""); // 맞추기 인풋
     const [manitoInfo, setManitoInfo] = useState(["", ""]); // 현 마니또, 전 마니또 결과
-    // const results = useQueries([
-    //     {
-    //         queryKey: "curGiver",
-    //         queryFn: fetchManitoInfo,
-    //     },
-    //     {
-    //         queryKey: "prevReceiver",
-    //         queryFn: fetchPreviousManitoInfo,
-    //     },
-    // ]);
+    const results = useQueries([
+        {
+            queryKey: "curGiver",
+            queryFn: fetchManitoInfo,
+        },
+        {
+            queryKey: "prevReceiver",
+            queryFn: fetchPreviousManitoInfo,
+        },
+    ]);
 
-    // const isSuccess = results.every(query => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
+    const isSuccess = results.every((query) => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
 
-    // if(isSuccess) {
-    //     // 모든 마니또 정보가 fetch되었을 때 setState
-    //     setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
-    // }
+    if (isSuccess && results[0]?.data?.data?.manitoGiver && results[1]?.data?.data?.manitoReceiver) {
+        setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
+    }
 
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
@@ -54,7 +54,7 @@ const SectionManito = () => {
 
     return (
         <ContentContainer>
-            {!user && <Navigate to="/"/>}
+            {!user && <Navigate to="/" />}
             <Title>마니또</Title>
             <div>
                 <StGuessWrap>
