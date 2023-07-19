@@ -10,6 +10,7 @@ export const DashBoardContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+    width: 100%;
     height: 100%;
     padding: 50px;
     box-sizing: border-box;
@@ -24,6 +25,8 @@ export const LetterContainer = styled.div`
 `;
 
 export const LetterBox = styled.div`
+width: 100%;
+min-height: 80px;
 margin-bottom: 1rem;
 
 & > h5 {
