@@ -29,7 +29,9 @@ const SectionManito = () => {
     useEffect(() => {
         if(result){
             console.log("result ", result);
-            //setManitoInfo([result[0].data.manitoGiver, result[1].data.manitoReceiver]);
+            setManitoInfo([
+                !result[0].isError ? result[0].data.data.manitoGiver : "", 
+                !result[1].isError ? result[1].data.data.manitoReceiver : ""]);
         }
     }, [result]);
 
