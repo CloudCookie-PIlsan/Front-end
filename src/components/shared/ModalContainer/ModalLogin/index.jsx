@@ -28,8 +28,7 @@ const ModalLogin = (props) => {
         onSuccess: (data) => {
             console.log(data);
             queryClient.setQueryData("user", data); // ??
-            const jwt = data.data.token;
-            setCookie("Authorization", jwt);
+            setCookie("Authorization", data.data.token);
             dispatch(setLogin(true));
             window.alert(`환영합니다!`)
             onClose();
