@@ -33,6 +33,7 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
+    console.log("logout!");
     removeCookie('Authorization');
     dispatch(setLogin(false));
     navigate('/');
@@ -58,7 +59,7 @@ const NavBar = () => {
       <Button $negative={true} handleBtnClick={()=> {
         handleLetterModal(true);
       }}>마니또에게 쪽지 보내기</Button>
-      <Button $negative={true} handleBtnClick={()=> handleLogout}>로그아웃</Button>
+      <Button $negative={true} handleBtnClick={handleLogout}>로그아웃</Button>
     </div> }
 
       
