@@ -4,7 +4,7 @@ import axios from "axios";
 import { async } from "q";
 import { getCookie } from "../modules/cookie";
 
-const loginToken = getCookie("Authorization") || ""; // 로그인 토큰
+const loginToken = getCookie("Authorization"); // 로그인 토큰
 
 /** Axios instance */
 const client = axios.create({
