@@ -13,10 +13,10 @@ export const StWrapper = styled.div`
 `;
 
 export const StContainer = styled.div`
-    width: 90%;
-    height: 80vh;
+    width: 95%;
+    height: calc(100% - 150px);
     border: var(--border);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
     //padding: 5rem;
     box-sizing: border-box;
