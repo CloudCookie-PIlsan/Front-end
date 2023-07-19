@@ -45,7 +45,7 @@ export const AnswerBox = styled.p`
 export const StManitoWrap = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 50px;
     margin-top: 5rem;
@@ -57,7 +57,7 @@ export const StManitoBox = styled.p`
     justify-content: flex-start;
     gap: 10px;
     padding: 2rem;
-    border: var(--border);
+    border: var(--border-colored);
     margin-top: 1rem;
     font-size: 1.2rem;
     border-radius: 10px;

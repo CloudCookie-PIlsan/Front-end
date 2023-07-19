@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StWrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background-color: var(--color-main);
+    background-color: var(--background-light);
     background-image: url('../assets/images/img-heart.svg');
     background-size: 67px 85px;
     background-repeat: repeat;
@@ -16,7 +16,7 @@ export const StContainer = styled.div`
     width: 90%;
     height: 80vh;
     border: var(--border);
-    background-color: var(--background);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     //padding: 5rem;
     box-sizing: border-box;

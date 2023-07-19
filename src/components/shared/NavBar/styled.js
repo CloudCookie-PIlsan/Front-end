@@ -8,7 +8,7 @@ export const StNavContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     border: var(--border);
-    background-color: var(--background);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     position: absolute;
     top: 30px;
