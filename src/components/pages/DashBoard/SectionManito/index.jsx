@@ -7,8 +7,12 @@ import { StManitoWrap, StGuessWrap, StManitoBox, AnswerBox } from "./styled";
 import { ContentContainer } from "../styled";
 import { useMutation, useQueries } from "react-query";
 import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../../api/API";
+import { getCookie } from "../../../../modules/cookie";
+import { Navigate } from "react-router-dom";
+import UseHandleExpiredToken from "../../../../modules/user";
 
 const SectionManito = () => {
+    const user = getCookie("Authorization");
     const [isGuessed, setIsGuessed] = useState(false); // 맞추기를 한 번이라도 했는지
     const [guess, setGuess] = useState({ // 맞추기 결과값
         username: "",
@@ -41,6 +45,7 @@ const SectionManito = () => {
         },
         onError: (error) => {
             console.log(error);
+            UseHandleExpiredToken(); // ? 이렇게 쓰는 거 맞나?
         },
     });
 
@@ -50,6 +55,7 @@ const SectionManito = () => {
 
     return (
         <ContentContainer>
+            {!user && <Navigate to="/"/>}
             <Title>마니또</Title>
             <div>
                 <StGuessWrap>

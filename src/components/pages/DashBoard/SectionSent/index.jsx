@@ -4,12 +4,16 @@ import SubTitle from "../../../shared/SubTitle";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
 import { fetchSentList } from "../../../../api/API";
 import { useQuery } from "react-query";
+import { getCookie } from "../../../../modules/cookie";
+import { Navigate } from "react-router-dom";
 
-const SectionSent = (props) => {
+const SectionSent = () => {
+    const user = getCookie("Authorization");
     const { isLoading, isError, data } = useQuery("sent", fetchSentList);
 
     return (
         <ContentContainer>
+            {!user && <Navigate to="/" />}
             <Title>보낸 쪽지함</Title>
             <LetterContainer>
                 {!isLoading &&

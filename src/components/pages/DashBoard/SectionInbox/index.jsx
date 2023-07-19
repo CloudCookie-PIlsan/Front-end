@@ -4,12 +4,16 @@ import SubTitle from "../../../shared/SubTitle";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
 import { fetchReceivedList } from "../../../../api/API";
 import { useQuery } from "react-query";
+import { getCookie } from "../../../../modules/cookie";
+import { Navigate } from "react-router-dom";
 
 const SectionInbox = () => {
+    const user = getCookie("Authorization");
     const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList);
 
     return (
         <ContentContainer>
+            {!user && <Navigate to="/" />}
             <Title>받은 쪽지함</Title>
             <LetterContainer>
                 {!isLoading &&
