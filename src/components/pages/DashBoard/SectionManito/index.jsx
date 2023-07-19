@@ -9,12 +9,13 @@ import { useMutation, useQueries } from "react-query";
 import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../../api/API";
 
 const SectionManito = () => {
-    const [isGuessed, setIsGuessed] = useState(false);
-    const [guess, setGuess] = useState({
+    const [isGuessed, setIsGuessed] = useState(false); // 맞추기를 한 번이라도 했는지
+    const [guess, setGuess] = useState({ // 맞추기 결과값
         username: "",
         success: false,
     });
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState(""); // 맞추기 인풋
+    const [manitoInfo, setManitoInfo] = useState([]); // 현 마니또, 전 마니또 결과
     const result = useQueries([
         {
             queryKey: "curGiver",
@@ -26,10 +27,10 @@ const SectionManito = () => {
         },
     ]);
     useEffect(() => {
-        console.log("SectionManito");
-        console.log(result);
-        const loadingFinishAll = result.some((res) => res.isLoading); // ? 아직 이해 못했어
-        console.log(loadingFinishAll);
+        if(result){
+            console.log("result ", result);
+            //setManitoInfo([result[0].data.manitoGiver, result[1].data.manitoReceiver]);
+        }
     }, [result]);
 
     const { mutate } = useMutation(guessManito, {
@@ -52,9 +53,9 @@ const SectionManito = () => {
             <div>
                 <StGuessWrap>
                     {isGuessed && (
-                        <AnswerBox type={guess.success && "fail"}>
-                            {guess.success
-                                ? `축하합니다! 마니또를 눈치챘네요. 당신의 오늘 마니또는 <span>${guess.username}</span> 이었어요.`
+                        <AnswerBox type={guess?.success && "fail"}>
+                            {guess?.success
+                                ? `축하합니다! 마니또를 눈치챘네요. 당신의 오늘 마니또는 <span>${guess?.username}</span> 이었어요.`
                                 : "아쉬워요! 이번에는 마니또를 맞히지 못했어요."}
                         </AnswerBox>
                     )}
@@ -81,11 +82,11 @@ const SectionManito = () => {
             <StManitoWrap>
                 <div>
                     <SubTitle>오늘 당신의 비밀 친구는? 🤔</SubTitle>
-                    <StManitoBox type="giver">{result[0].data.manitoGiver}</StManitoBox>
+                    <StManitoBox type="giver">{manitoInfo[0]}</StManitoBox>
                 </div>
                 <div>
                     <SubTitle>어제 당신의 마니또는? 💘</SubTitle>
-                    <StManitoBox type="receiver">{result[1].data.manitoReceiver}</StManitoBox>
+                    <StManitoBox type="receiver">{manitoInfo[1]}</StManitoBox>
                 </div>
             </StManitoWrap>
         </ContentContainer>
