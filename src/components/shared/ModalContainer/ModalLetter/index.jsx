@@ -24,10 +24,6 @@ const ModalRegister = (props) => {
         },
     });
 
-    /** 보낼 마니또 이름 가져오기 */
-    const { data } = useQuery("curGiver", fetchManitoInfo);
-    useEffect(() => {}, [data]);
-
     /** 로그인 input state 처리 함수 */
     const handleInput = (e) => {
         setText(e.target.value);
@@ -44,10 +40,21 @@ const ModalRegister = (props) => {
         }
     }
 
+    /** 보낼 마니또 이름 가져오기 */
+    const { isLoading, isError, data } = useQuery("curGiver", fetchManitoInfo, {
+        onSuccess: (data) => {
+            console.log("Manito name ", data);
+        },
+        onError: (error) => {
+            console.log(error);
+        },
+    });
+    if(isLoading) return;
+    if(isError) return;
     return (
         <ModalContainer onClose={onClose}>
             <Title>마니또에게 쪽지 보내기</Title>
-            <p>이름: {data !== undefined && data.manitoGiver}</p>
+            <p>이름: {data !== undefined && data.data.manitoGiver}</p>
             <TextArea value={text} handleChange={handleInput}/>
             <StButtonContainer>
                 <Button handleBtnClick={handleSubmit}>보내기</Button>
