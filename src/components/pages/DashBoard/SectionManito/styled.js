@@ -12,16 +12,19 @@ export const StGuessWrap = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
     gap: 1.5rem;
-    
 
     & > div {
         width: 100%;
         display: flex;
         flex-direction: row;
         gap: 10px;
+        flex-wrap: wrap;
         & > input {
           margin: 0;
           background-color: transparent;
+          min-width: 100px;
+          max-width: 400px;
+          flex-shrink: 0;
         }
         & > button {
           flex-shrink: 0;
@@ -49,6 +52,7 @@ export const StManitoWrap = styled.div`
     justify-content: flex-start;
     gap: 50px;
     margin-top: 5rem;
+    flex-wrap: wrap;
 `;
 export const StManitoBox = styled.p`
     width: 200px;

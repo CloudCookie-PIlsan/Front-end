@@ -4,7 +4,7 @@ export const StSubMenu = styled.div`
     width: 200px;
     height: 100%;
     overflow: hidden;
-    border-right: var(--border);
+    border-right: var(--border-colored);
     padding-right: 1rem;
     box-sizing: border-box;
     flex-shrink: 0;

@@ -15,10 +15,10 @@ export const StWrapper = styled.div`
 export const StContainer = styled.div`
     width: 95%;
     height: calc(100% - 150px);
-    border: var(--border);
+    border: var(--border-colored);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
     background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    //padding: 5rem;
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 `;

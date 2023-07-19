@@ -5,10 +5,15 @@ import Title from '../Title';
 import ModalLogin from '../ModalContainer/ModalLogin';
 import ModalRegister from '../ModalContainer/ModalRegister';
 import ModalLetter from '../ModalContainer/ModalLetter';
-import { getCookie, removeCookie } from '../../../modules/cookie';
+import { getCookie } from '../../../modules/cookie';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLogin } from '../../../redux/modules/user';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
+  const isLogin = useSelector((state) => state.isLogin);
+
   const navigate = useNavigate();
 
   // 모달 제어 화면
@@ -31,9 +36,9 @@ const NavBar = () => {
     <>  
     <StNavContainer>
       <div>
-        <Title>항해마니또💘</Title>
+        <Title><Link to="/">항해마니또💘</Link></Title>
       </div>
-      {getCookie("Authorization") === undefined ? <div>
+      {isLogin ? <div>
         <Button color="danger" $negative={true} handleBtnClick={()=> {
           handleRegisterModal(true)
         }}>Sign Up</Button>
@@ -46,7 +51,7 @@ const NavBar = () => {
           handleLetterModal(true);
         }}>마니또에게 쪽지 보내기</Button>
         <Button $negative={true} handleBtnClick={()=> {
-          removeCookie("Authorization");
+          
           navigate("/");
         }}>로그아웃</Button>
         
