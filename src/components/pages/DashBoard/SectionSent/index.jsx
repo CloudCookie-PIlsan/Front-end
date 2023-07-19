@@ -9,8 +9,20 @@ import { Navigate } from "react-router-dom";
 
 const SectionSent = () => {
     const user = getCookie("Authorization");
-    const { isLoading, isError, data } = useQuery("sent", fetchSentList);
-
+    const { isLoading, isError, data } = useQuery("sent", fetchSentList, {
+        onSuccess: (data) => {
+            console.log("SectionSent success ", data);
+        },
+        onError: (error) => {
+            console.log("SectionSent error ", error.message);
+        },
+    });
+    if (isLoading) {
+        return;
+    }
+    if (isError) {
+        return;
+    }
     return (
         <ContentContainer>
             {!user && <Navigate to="/" />}
@@ -18,7 +30,8 @@ const SectionSent = () => {
             <LetterContainer>
                 {!isLoading &&
                     !isError &&
-                    data.map((item, index) => {
+                    data.data.length !== 0 &&
+                    data.data.map((item, index) => {
                         return (
                             <LetterBox key={index}>
                                 <SubTitle>To. {item.getPersonUsername}</SubTitle>
