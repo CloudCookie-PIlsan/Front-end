@@ -36,5 +36,8 @@ margin-bottom: 1rem;
 & > p {
     padding: 20px;
     border: var(--border-colored);
+    line-height: 1.5;
+    max-height: 100px;
+    overflow-y: scroll;
 }
 `
