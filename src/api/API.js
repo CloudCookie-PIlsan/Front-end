@@ -48,7 +48,7 @@ const fetchPreviousManitoInfo = async () => {
 
 /** 나의 마니또 맞추기 */
 const guessManito = async (userName) => {
-    const response = await client.post(`/api/manitoes/guessManito`, { userName }, config());
+    const response = await client.post(`/api/manitoes/guessManito`, { username }, config());
     return response;
 };
 
