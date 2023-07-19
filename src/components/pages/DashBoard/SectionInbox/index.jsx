@@ -11,7 +11,11 @@ const SectionInbox = () => {
     const user = getCookie("Authorization");
     const queryClient = new QueryClient();
     const calDate = (targetDate) => {
-        const today = new Date().toISOString().substring(0, 10);
+        const curr = new Date();
+        const today = new Date(curr.getTime() 
+        + (curr.getTimezoneOffset() * 60 * 1000) // utc
+        + 9 * 60 * 60 * 1000) // 한국 시간차 + 9시간
+        .toISOString().substring(0, 10);
         console.log(today);
         return targetDate === today;
     }
