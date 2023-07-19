@@ -15,7 +15,7 @@ const client = axios.create({
 /** post config */
 const config = {
     headers: {
-        Authorization: loginToken,
+        Authorization: `Bearer ${loginToken}`,
         "Content-type": "application/json",
     },
 }
