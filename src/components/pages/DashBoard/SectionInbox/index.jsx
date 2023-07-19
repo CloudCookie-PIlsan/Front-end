@@ -11,7 +11,7 @@ const SectionInbox = () => {
     const user = getCookie("Authorization");
     const queryClient = new QueryClient();
     const calDate = (targetDate) => {
-        const today = new Date().toISOString().slice(-10);
+        const today = new Date().toISOString().substring(0, 10);
         console.log(today);
         return targetDate === today;
     }
