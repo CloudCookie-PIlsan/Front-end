@@ -10,6 +10,7 @@ import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
 import ManitoGetter from "../../../shared/ManitoGetter";
+import { is } from "@babel/types";
 
 const SectionManito = () => {
     const user = getCookie("Authorization");
@@ -21,19 +22,23 @@ const SectionManito = () => {
     });
     const [value, setValue] = useState(""); // 맞추기 인풋
 
+    const handleInput = (e) => {
+        setValue(e.target.value);
+    };
+
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
-            setGuess(data);
+            console.log(data);
+            setGuess({
+                username: value,
+                success: true,
+            });
             setIsGuessed(true);
         },
         onError: (error) => {
             console.log(error);
         },
-    });
-
-    const handleInput = (e) => {
-        setValue(e.target.value);
-    };
+    });    
 
     return (
         <ContentContainer>
@@ -42,9 +47,9 @@ const SectionManito = () => {
             <div>
                 <StGuessWrap>
                     {isGuessed && (
-                        <AnswerBox type={guess?.success && "fail"}>
+                        <AnswerBox type={guess.success && "fail"}>
                             {guess?.success
-                                ? `축하합니다! 마니또를 눈치챘네요. 당신의 오늘 마니또는 <span>${guess?.username}</span> 이었어요.`
+                                ? `축하합니다! 마니또를 눈치챘네요. 당신의 오늘 마니또는 <span>${guess.username}</span> 이었어요.`
                                 : "아쉬워요! 이번에는 마니또를 맞히지 못했어요."}
                         </AnswerBox>
                     )}
