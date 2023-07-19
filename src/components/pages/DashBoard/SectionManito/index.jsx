@@ -45,7 +45,6 @@ const SectionManito = () => {
         },
         onError: (error) => {
             console.log(error);
-            UseHandleExpiredToken(); // ? 이렇게 쓰는 거 맞나?
         },
     });
 
