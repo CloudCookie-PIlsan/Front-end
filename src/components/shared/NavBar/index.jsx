@@ -13,8 +13,9 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const dispatch = useDispatch();
-  const isLogin = useSelector((state) => state.isLogin);
+  //const isLogin = useSelector((state) => state.isLogin);
   const navigate = useNavigate();
+  const user = getCookie("Authorization");
 
   // 모달 제어 화면
   const [onLogin, setOnLogin] = useState(false);
@@ -44,21 +45,22 @@ const NavBar = () => {
       <div>
         <Title><Link to="/">항해마니또💘</Link></Title>
       </div>
-      {isLogin === true 
+      {user === undefined 
       ? <div>
-        <Button $negative={true} handleBtnClick={()=> {
-          handleLetterModal(true);
-        }}>마니또에게 쪽지 보내기</Button>
-        <Button $negative={true} handleBtnClick={()=> handleLogout}>로그아웃</Button>
-      </div> 
+      <Button color="danger" $negative={true} handleBtnClick={()=> {
+        handleRegisterModal(true)
+      }}>Sign Up</Button>
+      <Button color="danger" handleBtnClick={()=>{
+        handleLoginModal(true);
+      }}>Log in</Button>
+    </div>
       : <div>
-        <Button color="danger" $negative={true} handleBtnClick={()=> {
-          handleRegisterModal(true)
-        }}>Sign Up</Button>
-        <Button color="danger" handleBtnClick={()=>{
-          handleLoginModal(true);
-        }}>Log in</Button>
-      </div>}
+      <Button $negative={true} handleBtnClick={()=> {
+        handleLetterModal(true);
+      }}>마니또에게 쪽지 보내기</Button>
+      <Button $negative={true} handleBtnClick={()=> handleLogout}>로그아웃</Button>
+    </div> }
+
       
     </StNavContainer>
         {onLogin && <ModalLogin onClose={()=>{
