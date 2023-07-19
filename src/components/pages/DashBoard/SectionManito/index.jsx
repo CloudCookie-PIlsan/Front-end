@@ -9,7 +9,7 @@ import { useMutation, useQueries } from "react-query";
 import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../../api/API";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
-import UseHandleExpiredToken from "../../../../modules/user";
+import UseHandleExpiredToken from "../../../../hooks/UseHandleExpiredToken";
 
 const SectionManito = () => {
     const user = getCookie("Authorization");
