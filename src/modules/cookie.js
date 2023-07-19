@@ -17,5 +17,14 @@ export const removeCookie = (name) => {
     return cookies.remove(name);
 };
 
-/** 쿠키에 저장된 로그인 토큰값 반환, 로그인 여부 확인용 */
-export const getAuth = getCookie("Authorization");
+/** 헤더 쿠키 가져오기 */
+export const getHeaderCookie = (name) => {
+    const cookies = document.cookie.split(";");
+    for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split("=");
+        if (cookieName.trim() === name) {
+            return decodeURIComponent(cookieValue);
+        }
+    }
+    return null;
+};
