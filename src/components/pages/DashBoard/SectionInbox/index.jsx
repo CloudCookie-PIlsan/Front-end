@@ -9,6 +9,11 @@ import { Navigate } from "react-router-dom";
 
 const SectionInbox = () => {
     const user = getCookie("Authorization");
+    const calDate = (targetDate) => {
+        const today = new Date().toISOString();
+        console.log(today);
+        return targetDate === today;
+    }
     const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList, {
         onSuccess: (data) => {
             console.log("SectionInbox success ", data);
@@ -35,7 +40,9 @@ const SectionInbox = () => {
                     data.data.map((item, index) => {
                         return (
                             <LetterBox key={index}>
-                                <SubTitle>From. {item.sendPersonUsername}</SubTitle>
+                                <SubTitle>From. {calDate(item.receiveDay) 
+                                ? `당신의 마니또😘`
+                                : item.sendPersonUsername}<span>{item.receiveDay}</span></SubTitle>
                                 <p>{item.contents}</p>
                             </LetterBox>
                         );
