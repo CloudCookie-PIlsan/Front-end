@@ -8,8 +8,13 @@ import { useQueryClient, useMutation } from "react-query";
 import { StButtonContainer } from "../styled";
 import { login } from "../../../../api/API";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../../../redux/modules/user";
+import { setCookie } from "../../../../modules/cookie";
 
 const ModalLogin = (props) => {
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const { onClose } = props;
     const [errMsg, setErrMsg] = useState("");
@@ -22,7 +27,9 @@ const ModalLogin = (props) => {
     const { mutate } = useMutation(login, {
         onSuccess: (data) => {
             console.log(data);
-            queryClient.setQueryData("user", data);
+            queryClient.setQueryData("user", data); // ??
+            setCookie("Authorization", data.data.token);
+            dispatch(setLogin(true));
             window.alert(`환영합니다!`)
             onClose();
             navigate("/dashboard/manito");
