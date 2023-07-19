@@ -28,7 +28,8 @@ const SectionManito = () => {
 
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
-            console.log(data);
+            console.log("value ", value);
+            console.log("guessManito ", data);
             setGuess({
                 username: data.data.username,
                 success: data.data.success,
