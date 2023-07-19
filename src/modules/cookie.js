@@ -16,15 +16,3 @@ export const getCookie = (name) => {
 export const removeCookie = (name) => {
     return cookies.remove(name);
 };
-
-/** 헤더 쿠키 가져오기 */
-export const getHeaderCookie = (name) => {
-    const cookies = document.cookie.split(";");
-    for (const cookie of cookies) {
-        const [cookieName, cookieValue] = cookie.split("=");
-        if (cookieName.trim() === name) {
-            return decodeURIComponent(cookieValue);
-        }
-    }
-    return null;
-};
