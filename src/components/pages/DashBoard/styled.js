@@ -35,6 +35,6 @@ margin-bottom: 1rem;
 }
 & > p {
     padding: 20px;
-    border: var(--border);
+    border: var(--border-colored);
 }
 `
