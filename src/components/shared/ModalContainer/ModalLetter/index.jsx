@@ -9,7 +9,7 @@ import { sendLetter, fetchManitoInfo } from "../../../../api/API";
 
 const ModalRegister = (props) => {
     const {onClose} = props;
-    const [text, SetText] = useState("");
+    const [text, setText] = useState("");
 
     // API 통신
     const queryClient = useQueryClient();
@@ -30,7 +30,7 @@ const ModalRegister = (props) => {
 
     /** 로그인 input state 처리 함수 */
     const handleInput = (e) => {
-        SetText(e.target.value);
+        setText(e.target.value);
         console.log(text)
     };
 
