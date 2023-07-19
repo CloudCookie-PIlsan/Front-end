@@ -34,7 +34,7 @@ const SectionSent = () => {
                     data.data.map((item, index) => {
                         return (
                             <LetterBox key={index}>
-                                <SubTitle>To. {item.getPersonUsername}</SubTitle>
+                                <SubTitle>To. {item.getPersonUsername}<span>{item.sendDay}</span></SubTitle>
                                 <p>{item.contents}</p>
                             </LetterBox>
                         );
