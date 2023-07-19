@@ -30,8 +30,8 @@ const SectionManito = () => {
         onSuccess: (data) => {
             console.log(data);
             setGuess({
-                username: value,
-                success: true,
+                username: data.data.username,
+                success: data.data.success,
             });
             setIsGuessed(true);
         },
