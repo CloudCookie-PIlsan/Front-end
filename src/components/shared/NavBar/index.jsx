@@ -44,19 +44,20 @@ const NavBar = () => {
       <div>
         <Title><Link to="/">항해마니또💘</Link></Title>
       </div>
-      {!isLogin ? <div>
+      {isLogin === true 
+      ? <div>
+        <Button $negative={true} handleBtnClick={()=> {
+          handleLetterModal(true);
+        }}>마니또에게 쪽지 보내기</Button>
+        <Button $negative={true} handleBtnClick={()=> handleLogout}>로그아웃</Button>
+      </div> 
+      : <div>
         <Button color="danger" $negative={true} handleBtnClick={()=> {
           handleRegisterModal(true)
         }}>Sign Up</Button>
         <Button color="danger" handleBtnClick={()=>{
           handleLoginModal(true);
         }}>Log in</Button>
-      </div>
-      : <div>
-        <Button $negative={true} handleBtnClick={()=> {
-          handleLetterModal(true);
-        }}>마니또에게 쪽지 보내기</Button>
-        <Button $negative={true} handleBtnClick={()=> handleLogout}>로그아웃</Button>
       </div>}
       
     </StNavContainer>
