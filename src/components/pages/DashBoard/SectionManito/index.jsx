@@ -5,7 +5,7 @@ import Input from "../../../shared/Input";
 import Button from "../../../shared/Button";
 import { StManitoWrap, StGuessWrap, StManitoBox, AnswerBox } from "./styled";
 import { ContentContainer } from "../styled";
-import { useMutation, useQueries } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { guessManito, fetchManitoInfo, fetchPreviousManitoInfo } from "../../../../api/API";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
