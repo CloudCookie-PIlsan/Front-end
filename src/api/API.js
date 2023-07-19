@@ -6,6 +6,10 @@ import { async } from "q";
 /** Axios instance */
 const client = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
+    // headers: {
+    //     "Content-type": "application/json",
+    // },
+    withCredentials: true,
 });
 
 /** 마니또 매칭 요청 (TEST) */
