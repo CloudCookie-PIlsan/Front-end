@@ -33,7 +33,7 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    removeCookie('token');
+    removeCookie('Authorization');
     dispatch(setLogin(false));
     navigate('/');
   };
