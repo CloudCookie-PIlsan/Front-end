@@ -2,15 +2,23 @@
 import { assertYieldExpression } from "@babel/types";
 import axios from "axios";
 import { async } from "q";
+import { getCookie } from "../modules/cookie";
+
+const loginToken = getCookie("Authorization") || ""; // 로그인 토큰
 
 /** Axios instance */
 const client = axios.create({
     baseURL: `${process.env.REACT_APP_BASE_URL}`,
-    // headers: {
-    //     "Content-type": "application/json",
-    // },
     withCredentials: true,
 });
+
+/** post config */
+const config = {
+    headers: {
+        Authorization: `Bearer ${loginToken}`,
+        "Content-type": "application/json",
+    },
+}
 
 /** 마니또 매칭 요청 (TEST) */
 const matchManito = async (newMatch) => {
@@ -45,13 +53,13 @@ const fetchPreviousManitoInfo = async () => {
 
 /** 나의 마니또 맞추기 */
 const guessManito = async (userName) => {
-    const response = await client.post(`/api/manitoes/guessManito`, { userName });
+    const response = await client.post(`/api/manitoes/guessManito`, { userName }, config);
     return response;
 };
 
 /** 쪽지 보내기 */
 const sendLetter = async (contents) => {
-    const response = await client.post(`/api/messages`, { contents });
+    const response = await client.post(`/api/messages`, { contents }, config);
     return response;
 };
 
@@ -68,6 +76,7 @@ const fetchReceivedList = async () => {
 };
 
 export {
+    config,
     login,
     register,
     fetchManitoInfo,
