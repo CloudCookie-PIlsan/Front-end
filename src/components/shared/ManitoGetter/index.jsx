@@ -7,7 +7,7 @@ const ManitoGetter = (props) => {
 
     const { isLoading, isError, data, error } = useQuery(queryKey, queryFn, {
         onSuccess: (data) => {
-            console.log(querykey, data);
+            console.log(queryKey, data);
         },
         onError: (e) => {
             console.log(e.message);
