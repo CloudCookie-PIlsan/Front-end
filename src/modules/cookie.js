@@ -4,9 +4,10 @@ const cookies = new Cookies();
 
 /** 쿠키값 저장 */
 export const setCookie = (name, token) => {
+    const str = token.replace("Bearer ", "");
     const currentDate = new Date();
     const expirationDate = new Date(currentDate.getTime() + 60 * 60 * 1000);
-    return cookies.set(name, token, { expires: expirationDate });
+    return cookies.set(name, str, { expires: expirationDate });
 };
 
 /** 쿠키값 가져오기 */
