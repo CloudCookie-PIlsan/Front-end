@@ -15,8 +15,8 @@ const SectionManito = () => {
         success: false,
     });
     const [value, setValue] = useState(""); // 맞추기 인풋
-    const [manitoInfo, setManitoInfo] = useState([]); // 현 마니또, 전 마니또 결과
-    const result = useQueries([
+    const [manitoInfo, setManitoInfo] = useState(["", ""]); // 현 마니또, 전 마니또 결과
+    const results = useQueries([
         {
             queryKey: "curGiver",
             queryFn: fetchManitoInfo,
@@ -26,14 +26,13 @@ const SectionManito = () => {
             queryFn: fetchPreviousManitoInfo,
         },
     ]);
-    useEffect(() => {
-        if(result){
-            console.log("result ", result);
-            setManitoInfo([
-                !result[0].isError ? result[0].data.data.manitoGiver : "", 
-                !result[1].isError ? result[1].data.data.manitoReceiver : ""]);
-        }
-    }, [result]);
+
+    const isSuccess = results.every(query => query.isSuccess); // 로딩 중인 쿼리가 있는지 체크
+
+    if(isSuccess) {
+        // 모든 마니또 정보가 fetch되었을 때 setState
+        setManitoInfo(results[0].data.data.manitoGiver, results[1].data.data.manitoReceiver);
+    }
 
     const { mutate } = useMutation(guessManito, {
         onSuccess: (data) => {
@@ -65,7 +64,7 @@ const SectionManito = () => {
                     <div>
                         <Input
                             value={value}
-                            onChange={handleInput}
+                            handleChange={handleInput}
                             name="manito"
                             type="text"
                             placeholder="누구일까...?"
