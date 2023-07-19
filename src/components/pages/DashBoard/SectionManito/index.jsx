@@ -23,11 +23,13 @@ const SectionManito = () => {
     const [manitoInfo, setManitoInfo] = useState(["", ""]); // 현 마니또, 전 마니또 결과
     const { isCurLoading, curError, curGiverData } = useQuery("curGiver", fetchManitoInfo, {
         onSuccess : () => {
+            console.log(curGiverData);
             setManitoInfo([curGiverData.data.manitoGiver, manitoInfo[1]]);
         }
     });
     const { isPrevLoading, prevError, prevReceiverData } = useQuery("prevReceiver", fetchPreviousManitoInfo, {
         onSuccess : () => {
+            console.log(prevReceiverData);
             setManitoInfo([manitoInfo[0], prevReceiverData.data.manitoReceiver]);
         }
     });
