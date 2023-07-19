@@ -3,12 +3,13 @@ import Title from "../../../shared/Title";
 import SubTitle from "../../../shared/SubTitle";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
 import { fetchReceivedList } from "../../../../api/API";
-import { useQuery } from "react-query";
+import { useQuery, QueryClient } from "react-query";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
 
 const SectionInbox = () => {
     const user = getCookie("Authorization");
+    const queryClient = new QueryClient();
     const calDate = (targetDate) => {
         const today = new Date().toISOString();
         console.log(today);
@@ -17,11 +18,13 @@ const SectionInbox = () => {
     const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList, {
         onSuccess: (data) => {
             console.log("SectionInbox success ", data);
+            queryClient.invalidateQueries("inbox");
         },
         onError: (error) => {
             console.log("SectionInbox error ", error.message);
         },
-    });
+    }
+    );
 
     if (isLoading) {
         return;
