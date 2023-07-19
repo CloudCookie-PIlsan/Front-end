@@ -7,7 +7,7 @@ function Home() {
     const user = getCookie("Authorization");
     return (
             <StTypingText>
-            {!user && <Navigate to="/" />}
+            {user && <Navigate to="/dashboard/manito" />}
               Home</StTypingText>
     );
 }
