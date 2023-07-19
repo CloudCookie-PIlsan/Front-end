@@ -31,6 +31,7 @@ const ModalRegister = (props) => {
     /** 로그인 input state 처리 함수 */
     const handleInput = (e) => {
         SetText(e.target.value);
+        console.log(text)
     };
 
     const handleSubmit = () => {
