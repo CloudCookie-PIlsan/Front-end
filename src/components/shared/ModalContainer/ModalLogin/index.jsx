@@ -9,7 +9,6 @@ import { StButtonContainer } from "../styled";
 import { login } from "../../../../api/API";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setLogin } from "../../../../redux/modules/user";
 import { setCookie } from "../../../../modules/cookie";
 
 const ModalLogin = (props) => {
@@ -31,7 +30,6 @@ const ModalLogin = (props) => {
             const jwt = data.data.token.replace("Bearer ", "");
             console.log("jwt ", jwt);
             setCookie("Authorization", jwt);
-            dispatch(setLogin(true));
             window.alert(`환영합니다!`)
             onClose();
             navigate("/dashboard/manito");

@@ -1,25 +1,25 @@
 // action value
-const SET_LOGIN = "user/SET_LOGIN";
+const GUESS_SUCCESS = "user/GUESS_SUCCESS";
 
 // action creator
-export const setLogin = (isLogin) => {
+export const setSuccess = (isSuccess) => {
     return {
-        type: SET_LOGIN,
-        payload: isLogin,
+        type: GUESS_SUCCESS,
+        payload: isSuccess,
     };
 };
 
 // state
 const initialState = {
-    isLogin: false,
+    guessedManito: false, // 마니또 맞추기 성공 여부
 };
 
 // reducer
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_LOGIN:
+        case GUESS_SUCCESS:
             return {
-                isLogin: action.payload,
+                guessedManito: action.payload,
             };
         default:
             return state;

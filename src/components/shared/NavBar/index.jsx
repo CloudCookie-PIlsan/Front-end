@@ -8,7 +8,6 @@ import ModalLetter from '../ModalContainer/ModalLetter';
 import { getCookie, removeCookie } from '../../../modules/cookie';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogin } from '../../../redux/modules/user';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
@@ -35,7 +34,6 @@ const NavBar = () => {
   const handleLogout = () => {
     console.log("logout!");
     removeCookie('Authorization');
-    dispatch(setLogin(false));
     navigate('/');
   };
 

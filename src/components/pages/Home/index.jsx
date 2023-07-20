@@ -6,6 +6,7 @@ import TypingAnimText from "../../shared/TypingAnimText";
 
 function Home() {
     const user = getCookie("Authorization");
+    console.log(new Date());
     return (
         <StHomeContainer>
             {user && <Navigate to="/dashboard/manito" />}
