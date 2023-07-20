@@ -15,6 +15,7 @@ export const StNavContainer = styled.div`
     left: 2.5%;
     padding: 0 2rem;
     box-sizing: border-box;
+    z-index: 100;
 
     & > div {
         display: flex;
