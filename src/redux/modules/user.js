@@ -11,7 +11,7 @@ export const setSuccess = (payload) => {
 
 // state
 const initialState = {
-    guessedManito: false, // 마니또 맞추기 성공 여부
+    isGuessSucceded: false, // 마니또 맞추기 성공 여부
     isGuessed: false, // 마니또 맞추기 시도 여부
 };
 
@@ -21,8 +21,8 @@ const reducer = (state = initialState, action) => {
         case GUESS_SUCCESS:
             console.log(action.payload);
             return {
-                guessedManito: action.payload.guessedManito,
-                isGuessed: action.payload.isGuessed,
+                isGuessSucceded: action.payload[0],
+                isGuessed: action.payload[1],
             };
         default:
             return state;
