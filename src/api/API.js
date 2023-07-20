@@ -2,7 +2,7 @@
 import { assertYieldExpression } from "@babel/types";
 import axios from "axios";
 import { async } from "q";
-import { getCookie } from "../modules/cookie";
+import { getCookie, removeCookie } from "../modules/cookie";
 
 /** Axios instance */
 const client = axios.create({
