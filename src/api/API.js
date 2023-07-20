@@ -52,18 +52,8 @@ const fetchManitoInfo = async () => {
 
 /** 나의 전 마니또 정보 가져오기 (전날 나를 마니또 한 사람) */
 const fetchPreviousManitoInfo = async () => {
-    try {
-        const response = await client.get(`/api/manitoes/receiver`, config());
-        return response;
-    } catch (e) {
-        console.log("fetchManitoInfo error", e);
-        if (e.response && e.response.status === 500) {
-            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
-            removeCookie("Authorization");
-            window.location.href = "/";
-        }
-        throw e;
-    }
+    const response = await client.get(`/api/manitoes/receiver`, config());
+    return response;
 };
 
 /** 나의 마니또 맞추기 */
