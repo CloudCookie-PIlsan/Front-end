@@ -12,7 +12,7 @@ export const StNavContainer = styled.div`
     border-radius: 10px;
     position: absolute;
     top: 40px;
-    left: calc(2.5%);
+    left: 2.5%;
     padding: 0 2rem;
     box-sizing: border-box;
 
