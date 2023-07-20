@@ -17,18 +17,14 @@ const config = () => {
         headers: {
             Authorization: `Bearer ${loginToken}`,
             "Content-type": "application/json",
-        }
-    }
-}
+        },
+    };
+};
 
 /** 로그인 */
 const login = async (newData) => {
-    try {
-        const response = await client.post(`/api/login`, newData);
-        return response;
-    } catch (e) {
-        document.location.href = "/login";
-    }
+    const response = await client.post(`/api/login`, newData);
+    return response;
 };
 
 /** 회원 가입 */
@@ -45,9 +41,9 @@ const fetchManitoInfo = async () => {
         return response;
     } catch (e) {
         console.log("fetchManitoInfo error", e);
-        if(e.response && e.response.status === 500){
+        if (e.response && e.response.status === 500) {
             window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
-            removeCookie("Authorization");    
+            removeCookie("Authorization");
             window.location.href = "/";
         }
         throw e;
@@ -56,32 +52,82 @@ const fetchManitoInfo = async () => {
 
 /** 나의 전 마니또 정보 가져오기 (전날 나를 마니또 한 사람) */
 const fetchPreviousManitoInfo = async () => {
-    const response = await client.get(`/api/manitoes/receiver`, config());
-    return response;
+    try {
+        const response = await client.get(`/api/manitoes/receiver`, config());
+        return response;
+    } catch (e) {
+        console.log("fetchManitoInfo error", e);
+        if (e.response && e.response.status === 500) {
+            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
+            removeCookie("Authorization");
+            window.location.href = "/";
+        }
+        throw e;
+    }
 };
 
 /** 나의 마니또 맞추기 */
 const guessManito = async (username) => {
-    const response = await client.post(`/api/manitoes/guessManito`, { username }, config());
-    return response;
+    try {
+        const response = await client.post(`/api/manitoes/guessManito`, { username }, config());
+        return response;
+    } catch (e) {
+        console.log("fetchManitoInfo error", e);
+        if (e.response && e.response.status === 500) {
+            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
+            removeCookie("Authorization");
+            window.location.href = "/";
+        }
+        throw e;
+    }
 };
 
 /** 쪽지 보내기 */
 const sendLetter = async (contents) => {
-    const response = await client.post(`/api/messages`, { contents }, config());
-    return response;
+    try {
+        const response = await client.post(`/api/messages`, { contents }, config());
+        return response;
+    } catch (e) {
+        console.log("fetchManitoInfo error", e);
+        if (e.response && e.response.status === 500) {
+            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
+            removeCookie("Authorization");
+            window.location.href = "/";
+        }
+        throw e;
+    }
 };
 
 /** 보낸 쪽지 리스트 확인 */
 const fetchSentList = async () => {
-    const response = await client.get(`/api/messages/send`, config());
-    return response;
+    try {
+        const response = await client.get(`/api/messages/send`, config());
+        return response;
+    } catch (e) {
+        console.log("fetchManitoInfo error", e);
+        if (e.response && e.response.status === 500) {
+            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
+            removeCookie("Authorization");
+            window.location.href = "/";
+        }
+        throw e;
+    }
 };
 
 /** 받은 쪽지 리스트 확인 */
 const fetchReceivedList = async () => {
-    const response = await client.get(`/api/messages/get`, config());
-    return response;
+    try {
+        const response = await client.get(`/api/messages/get`, config());
+        return response;
+    } catch (e) {
+        console.log("fetchManitoInfo error", e);
+        if (e.response && e.response.status === 500) {
+            window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
+            removeCookie("Authorization");
+            window.location.href = "/";
+        }
+        throw e;
+    }
 };
 
 export {
