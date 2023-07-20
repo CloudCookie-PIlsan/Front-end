@@ -29,9 +29,9 @@ const NavBar = () => {
     setOnLetter(isOn);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     console.log("logout!");
-    removeCookie('Authorization');
+    await removeCookie('Authorization');
     navigate('/');
   };
 
