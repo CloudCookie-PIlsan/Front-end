@@ -3,13 +3,13 @@ import Title from "../../../shared/Title";
 import SubTitle from "../../../shared/SubTitle";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
 import { fetchSentList } from "../../../../api/API";
-import { useQuery, QueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
 
 const SectionSent = () => {
     const user = getCookie("Authorization");
-    const queryClient = new QueryClient();
+    const queryClient = useQueryClient();
     const { isLoading, isError, data } = useQuery("sent", fetchSentList, {
         onSuccess: (data) => {
             console.log("SectionSent success ", data);

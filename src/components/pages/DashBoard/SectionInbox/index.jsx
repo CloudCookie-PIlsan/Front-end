@@ -3,13 +3,13 @@ import Title from "../../../shared/Title";
 import SubTitle from "../../../shared/SubTitle";
 import { ContentContainer, LetterContainer, LetterBox } from "../styled";
 import { fetchReceivedList } from "../../../../api/API";
-import { useQuery, QueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getCookie } from "../../../../modules/cookie";
 import { Navigate } from "react-router-dom";
 
 const SectionInbox = () => {
     const user = getCookie("Authorization");
-    const queryClient = new QueryClient();
+    const queryClient = useQueryClient();    
     const calDate = (targetDate) => {
         const today = new Date().toISOString().substring(0, 10);
         const target = targetDate.substring(0, 10);
