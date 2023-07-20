@@ -10,7 +10,7 @@ function Home() {
     return (
         <StHomeContainer>
             {user && <Navigate to="/dashboard/manito" />}
-              <img src="/assets/images/img-sparta.png" alt="르탄이" width="400px" />
+              <img src="/assets/images/img-sparta.png" alt="르탄이" width="300px" />
             <TypingAnimText text="너... 내 마니또가 돼라 ❤" />
         </StHomeContainer>
     );

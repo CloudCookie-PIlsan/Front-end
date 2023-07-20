@@ -6,7 +6,7 @@ const cursor = keyframes`
 `;
 
 export const StTypingText = styled.h2`
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 700;
 
     &::after {
