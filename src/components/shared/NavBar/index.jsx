@@ -7,11 +7,9 @@ import ModalRegister from '../ModalContainer/ModalRegister';
 import ModalLetter from '../ModalContainer/ModalLetter';
 import { getCookie, removeCookie } from '../../../modules/cookie';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const dispatch = useDispatch();
   //const isLogin = useSelector((state) => state.isLogin);
   const navigate = useNavigate();
   const user = getCookie("Authorization");
