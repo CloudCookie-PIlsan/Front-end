@@ -29,7 +29,7 @@ const ModalRegister = (props) => {
         },
         onError: (error) => {
             console.log(error);
-            setErrMsg(error.message);
+            setErrMsg(error.response.data.errorMessage);
         },
     });
 
