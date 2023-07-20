@@ -45,7 +45,7 @@ const fetchManitoInfo = async () => {
         return response;
     } catch (e) {
         console.log("fetchManitoInfo error", e);
-        if(e.response && e.response.stats === 500){
+        if(e.response && e.response.status === 500){
             window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
             removeCookie("Authorization");    
         }
