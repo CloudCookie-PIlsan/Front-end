@@ -11,12 +11,9 @@ const SectionInbox = () => {
     const user = getCookie("Authorization");
     const queryClient = new QueryClient();
     const calDate = (targetDate) => {
-        const curr = new Date();
-        const today = new Date(curr.getTime() 
-        + (curr.getTimezoneOffset() * 60 * 1000) // utc
-        + 9 * 60 * 60 * 1000) // 한국 시간차 + 9시간
-        .toISOString().substring(0, 10);
-        console.log(today);
+        const today = new Date().toISOString().substring(0, 10);
+        const target = targetDate.substring(0, 10);
+        console.log("today, ", today, "target, ", target);
         return targetDate === today;
     }
     const { isLoading, isError, data } = useQuery("inbox", fetchReceivedList, {
@@ -49,7 +46,7 @@ const SectionInbox = () => {
                             <LetterBox key={index}>
                                 <SubTitle>From. {calDate(item.receiveDay) 
                                 ? `당신의 마니또😘`
-                                : item.sendPersonUsername}<span>{item.receiveDay}</span></SubTitle>
+                                : item.sendPersonUsername}<span>{item.receiveDay.substring(0, 10)}</span></SubTitle>
                                 <p>{item.contents}</p>
                             </LetterBox>
                         );
