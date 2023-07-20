@@ -12,6 +12,7 @@ const UseExpiredToken = () => {
 
         switch (status) {
             case 500:
+                console.log("error 500 에러 진입");
                 removeCookie("Authorization");
                 window.alert("로그인이 만료되었습니다! 다시 로그인해주세요.");
                 return <Navigate to="/" />;
