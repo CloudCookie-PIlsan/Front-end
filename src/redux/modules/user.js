@@ -19,6 +19,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case GUESS_SUCCESS:
+            console.log(action.payload);
             return {
                 guessedManito: action.payload.guessedManito,
                 isGuessed: action.payload.isGuessed,
