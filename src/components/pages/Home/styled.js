@@ -1,14 +1,9 @@
-import styled, {keyframes} from 'styled-components';
+import styled from "styled-components";
 
-// export const typing = keyframes`
-//     from{ width: 0; }
-// `;
-
-// export const cursor = keyframes`
-//     50%{ border-color: transparent; }
-//   `;
-
-export const StTypingText = styled.h1`
-    overflow: hidden;
-    white-space: nowrap;
-`
+export const StHomeContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+`;
