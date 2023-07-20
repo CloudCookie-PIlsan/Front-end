@@ -15,7 +15,7 @@ import { setSuccess } from "../../../../redux/modules/user";
 
 const SectionManito = () => {
     const dispatch = useDispatch();
-    const {isSucceded, isGuessed} = useSelector((state) => state.user); // 마니또 맞추기 1번 이상 성공시 무조건 유지
+    const {isGuessSucceded, isGuessed} = useSelector((state) => state.user); // 마니또 맞추기 1번 이상 성공시 무조건 유지
 
     const user = getCookie("Authorization"); // 로그인 여부
     const [guess, setGuess] = useState({
@@ -51,7 +51,7 @@ const SectionManito = () => {
             <div>
                 <StGuessWrap>
                     <SubTitle>오늘 당신의 마니또를 맞혀보세요! 😘</SubTitle>
-                    {isSucceded || 
+                    {isGuessSucceded || 
                     <div>
                         <Input
                             value={value}
@@ -70,8 +70,8 @@ const SectionManito = () => {
                         </Button>
                     </div>}
                     {isGuessed && (
-                        <AnswerBox type={isSucceded || "fail"}>
-                            {isSucceded
+                        <AnswerBox type={isGuessSucceded || "fail"}>
+                            {isGuessSucceded
                                 ? `축하합니다! 마니또를 눈치챘네요. 당신의 오늘 마니또는 ${guess.username} 이었어요.`
                                 : "아쉬워요! 이번에는 마니또를 맞히지 못했어요."}
                         </AnswerBox>
